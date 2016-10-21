@@ -4,4 +4,7 @@
 build/*
 bin/*
 lib/*
-
+*.cmake
+CMakeCache.txt
+Makefile
+CMakeFiles
