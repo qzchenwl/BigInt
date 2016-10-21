@@ -8,3 +8,4 @@ lib/*
 CMakeCache.txt
 Makefile
 CMakeFiles
+Testing
