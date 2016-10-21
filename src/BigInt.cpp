@@ -1,5 +1,6 @@
 #include "BigInt.h"
 #include <cassert>
+#include <iomanip>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -33,7 +34,12 @@ BigInt::BigInt(int n) {
   }
 }
 
+/**
+ *
+ * Most basic operator for BigInt
+ */
 BigInt &BigInt::operator+=(const BigInt &rhs) {
+  assert(m_ints.size() > 0 && rhs.m_ints.size() > 0);
   assert(m_ints.back() == -1 || m_ints.back() == 0);
   assert(rhs.m_ints.back() == -1 || rhs.m_ints.back() == 0);
 
@@ -161,4 +167,25 @@ string BigInt::toBitString() const {
     bits.push_back('|');
   }
   return string(bits.begin(), bits.end());
+}
+
+bool is_big_endian() {
+  union {
+    uint32_t i;
+    char c[4];
+  } bint = {0x01020304};
+
+  return bint.c[0] == 1;
+}
+ostream &operator<<(ostream &os, const BigInt &bigint) {
+  os << "[";
+  ios::fmtflags f(os.flags());
+  os << hex;
+  for (auto i = bigint.m_ints.size() - 1; i > 0; --i) {
+    os << bigint.m_ints[i] << ",";
+  }
+  os << bigint.m_ints[0];
+  os.flags(f);
+  os << "]";
+  return os;
 }

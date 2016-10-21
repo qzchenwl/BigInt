@@ -1,5 +1,6 @@
 #include "BigInt.h"
 #include <cmath>
+#include <iomanip>
 #include <iostream>
 
 using namespace std;
@@ -30,6 +31,13 @@ int main(int argc, char *argv[]) {
   cout << "d: " << d.toBitString() << endl;
   BigInt e = c - d;
   cout << "c - d: " << e.toBitString() << endl;
+
+  cout << hex << "a: " << a << endl;
+  cout << dec << "a: " << a << endl;
+  cout << oct << "a: " << a << endl;
+
+  cout << "z: " << z << endl;
+  cout << "z: " << z.toBitString() << endl;
 
   return 0;
 }

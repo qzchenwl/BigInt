@@ -3,6 +3,7 @@
 
 #include "gtest/gtest_prod.h"
 
+#include <iostream>
 #include <string>
 #include <vector>
 
@@ -41,6 +42,8 @@ public:
   bool operator<(const BigInt &rhs) const;
 
   std::string toBitString() const;
+
+  friend std::ostream &operator<<(std::ostream &os, const BigInt &bigint);
 };
 
 #endif /* BIGINT_H_ */
